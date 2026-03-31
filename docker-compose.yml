@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:15
+    container_name: pokedb
+    environment:
+      - POSTGRES_USER=usuario_dev
+      - POSTGRES_PASSWORD=senha_forte
+      - POSTGRES_DB=pokedex_db
+    ports:
+      - "5432:5432"

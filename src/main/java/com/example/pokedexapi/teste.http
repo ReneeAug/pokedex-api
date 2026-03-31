@@ -1,0 +1,10 @@
+POST http://localhost:8080/pokemons
+Content-Type: application/json
+
+{
+  "nome": "Bulbasaur",
+  "tipo": "Planta",
+  "nivel": "14"
+}
+### Deletar
+DELETE http://localhost:8080/pokemons/1

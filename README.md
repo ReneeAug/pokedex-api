@@ -1,4 +1,5 @@
  Pokedex API - Spring Boot & Docker
+ 
 Esta é uma API REST desenvolvida para gerenciar uma Pokedex, permitindo o ciclo completo de cadastro, leitura e exclusão (CRUD) de Pokémons. O projeto foca em boas práticas de desenvolvimento Backend com Java e containerização.
 
  Tecnologias Utilizadas

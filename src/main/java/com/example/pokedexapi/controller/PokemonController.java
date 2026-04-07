@@ -1,53 +1,42 @@
 package com.example.pokedexapi.controller;
+
 import com.example.pokedexapi.model.Pokemon;
-import com.example.pokedexapi.repository.PokemonRepository;
-
-
+import com.example.pokedexapi.service.PokemonService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/pokemons")
 public class PokemonController {
+
     @Autowired
-    private PokemonRepository repository;
+    private PokemonService service; // Agora injetamos o Service e não o Repository
 
     @GetMapping
-    public List<Pokemon> listar(){
-        return repository.findAll();
+    public List<Pokemon> listar() {
+        return service.listarTodos();
     }
-    @PostMapping
-    public Pokemon salvar(@RequestBody Pokemon pokemon){
-        return repository.save(pokemon);
 
-
-    }
-    // Buscar um único Pokémon pelo ID (ex: /pokemons/1)
     @GetMapping("/{id}")
-    public Optional<Pokemon> buscarPorId(@PathVariable Long id) {
-        return repository.findById(id);
+    public Pokemon buscar(@PathVariable Long id) {
+        return service.buscarPorId(id);
     }
 
-    // Editar um Pokémon que já existe
+    @PostMapping
+    public Pokemon criar(@Valid @RequestBody Pokemon pokemon) {
+        return service.salvar(pokemon);
+    }
+
     @PutMapping("/{id}")
-    public Pokemon atualizar(@PathVariable Long id, @RequestBody Pokemon dadosNovos) {
-        return repository.findById(id)
-                .map(pokemon -> {
-                    pokemon.setNome(dadosNovos.getNome());
-                    pokemon.setTipo(dadosNovos.getTipo());
-                    pokemon.setNivel(dadosNovos.getNivel());
-                    return repository.save(pokemon);
-                }).orElseThrow(() -> new RuntimeException("Pokémon não encontrado"));
+    public Pokemon editar(@PathVariable Long id, @Valid @RequestBody Pokemon pokemon) {
+        return service.atualizar(id, pokemon);
     }
 
-    // Excluir um Pokémon
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable Long id) {
-        repository.deleteById(id);
+    public void remover(@PathVariable Long id) {
+        service.deletar(id);
     }
 }
-
-

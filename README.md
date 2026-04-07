@@ -1,25 +1,37 @@
-#  Pokedex API - Spring Boot
+ Pokedex API - Spring Boot & Docker
+Esta é uma API REST desenvolvida para gerenciar uma Pokedex, permitindo o ciclo completo de cadastro, leitura e exclusão (CRUD) de Pokémons. O projeto foca em boas práticas de desenvolvimento Backend com Java e containerização.
 
-Esta é uma API RESTful desenvolvida para gerenciar uma Pokedex, permitindo o cadastro, leitura, atualização e exclusão (CRUD) de Pokémons. Projeto focado em demonstrar conhecimentos de **Backend com Java e Docker**.
+ Tecnologias Utilizadas
+Java 21: Versão mais recente para aproveitar as melhorias de performance.
 
-##  Tecnologias Utilizadas
-* **Java 21**
-* **Spring Boot 3.x**
-* **Spring Data JPA** (Persistência de dados)
-* **PostgreSQL** (Banco de dados)
-* **Docker & Docker Compose** (Containerização)
-* **Lombok** (Produtividade)
+Spring Boot 3.2.4: Framework principal para agilizar o desenvolvimento web.
 
-##  Estrutura do Projeto (MVC)
-O projeto segue o padrão de camadas para melhor organização:
-* `model`: Representação da entidade Pokemon no banco de dados.
-* `repository`: Interface de comunicação com o PostgreSQL.
-* `controller`: Endpoints da API para comunicação com o usuário.
+Spring Data JPA: Para uma persistência de dados eficiente e limpa.
 
-##  Como Executar o Projeto
+PostgreSQL: Banco de dados relacional robusto.
 
-1. Certifique-se de ter o **Docker** e o **Java 21** instalados.
-2. Clone o repositório.
-3. Na raiz do projeto, suba o banco de dados com:
-   ```bash
-   docker-compose up -d
+Docker & Docker Compose: Para subir o banco de dados de forma isolada e rápida.
+
+Lombok: Para reduzir o código repetitivo e focar na lógica.
+
+ Estrutura do Projeto (MVC)
+O código está organizado em camadas para facilitar a manutenção:
+
+Model: Representa a entidade Pokemon no banco.
+
+Repository: Comunicação direta com o banco de dados.
+
+Service: Camada de lógica de negócio (onde o processamento acontece).
+
+Controller: Onde ficam os endpoints da API para o usuário.
+
+ Como Executar
+Certifique-se de ter o Docker e o Java 21 instalados.
+
+Clone o repositório.
+
+Suba o banco de dados:
+
+Bash
+docker-compose up -d
+Execute a aplicação pelo IntelliJ ou terminal.
